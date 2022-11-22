@@ -26,6 +26,13 @@ const Register = () => {
         <form action="" className="flex flex-col">
           <div className="flex flex-col">
             <TextInput
+              label="Identificación de puesto"
+              type="password"
+              placeholder="A-12345678"
+            />
+          </div>
+          <div className="flex flex-col mt-2">
+            <TextInput
               label="Email"
               type="email"
               placeholder="example@mail.com"
@@ -38,15 +45,8 @@ const Register = () => {
               placeholder="Al menos 8 caracteres"
             />
           </div>
-          <div className="flex flex-col mt-2">
-            <TextInput
-              label="Identificación del puesto"
-              type="password"
-              placeholder="A-12345678"
-            />
-          </div>
           <div className="flex flex-col mt-4">
-            <Button>Convertirse en colaborador</Button>
+            <Button isLinked={false}>Convertirse en colaborador</Button>
           </div>
         </form>
         <div className="border-b border-slate-400 opacity-40 my-4"></div>

@@ -4,9 +4,23 @@ import Grape from '@/components/Icons/Grape'
 import Button from '../../ui/Button'
 import SearchInput from 'ui/SearchInput'
 import Link from 'next/link'
+import { useState, useEffect } from 'react'
 
 const App = () => {
   // https://servicios.senasa.gob.pe/siimf/produccionuva.html
+  const [parcel, setParcel] = useState([])
+
+  const fetchParcels = () => {
+    fetch('http://localhost:3005/api/v1/parcels')
+      .then((res) => res.json())
+      .then((data) => {
+        setParcel(data)
+        console.log(data)
+      })
+  }
+
+  useEffect(fetchParcels, [])
+
   return (
     <div className="w-5/6 sm:w-5/6 lg:w-3/6 space-y-2">
       <nav className="bg-white h-auto p-2 rounded-md border border-slate-400 border-opacity-70">
@@ -29,22 +43,17 @@ const App = () => {
           </div>
         </div>
         <div className="flex flex-col space-y-2">
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          {/* <Card></Card>
-          <Card></Card>
-          <Card></Card>
-          <Card></Card>
-          <Card></Card>
-          <Card></Card>
-          <Card></Card>
-          <Card></Card> */}
+          {parcel &&
+            parcel.map((parcel) => (
+              <Card
+                key={parcel._id}
+                name={parcel.name}
+                description={parcel.description}
+                region={parcel.region}
+                code={parcel.code}
+                image={parcel.image}
+              />
+            ))}
         </div>
       </main>
     </div>

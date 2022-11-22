@@ -30,6 +30,7 @@ const Login = () => {
               label="Email"
               type="email"
               placeholder="Ingrese su email"
+              isRequired={false}
             />
           </div>
           <div className="flex flex-col mt-2">
@@ -37,13 +38,14 @@ const Login = () => {
               label="Contraseña"
               type="password"
               placeholder="Ingrese su contraseña"
+              isRequired={false}
             />
           </div>
           <div className="my-2">
             <Checkbox label="Recordar" />
           </div>
           <div className="flex flex-col">
-            <Button>Iniciar sesión</Button>
+            <Button isLinked={false}>Iniciar sesión</Button>
           </div>
         </form>
         <div className="border-b border-slate-400 opacity-40 my-4"></div>
